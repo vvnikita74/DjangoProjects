@@ -1,0 +1,15 @@
+.round-ind {
+    border-radius: 15px;
+    width: 220px;
+    height: 250px;
+}
+
+.doclist {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-row-gap: 20px;
+}
+
+.doc {
+
+}

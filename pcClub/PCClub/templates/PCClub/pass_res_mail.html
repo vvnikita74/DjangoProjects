@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    Здравствуйте, {{ user }}!
+    Запрос восстановления пароля на {{ email }}. Перейдите по ссылке для изменения пароля:
+    {{ protocol}}://{{ domain }}{% url 'password_reset_confirm' uidb64=uid token=token %}
+</body>
+</html>

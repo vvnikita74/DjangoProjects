@@ -1,0 +1,57 @@
+.container {
+  margin-top: 60px;
+}
+
+.filterDiv {
+  background-color: #333;
+  color: #ffffff;
+  margin: 10px;
+  padding: 5px 10px 20px 20px;
+  display: none;
+}
+
+.filterDiv img {
+  border: solid 3px rgb(99, 99, 99);
+}
+
+.filterDiv a:visited {
+  color: #00ade7;
+}
+
+.filterDiv a:hover {
+  color: white;
+}
+
+.show {
+  display: block;
+}
+
+.btnBlock {
+  float:right;
+  margin: 10px 10px 0 0;
+}
+
+.imgBlock {
+  float: right;
+  margin: 0 10px;
+}
+
+.btn {
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  color:#ddd;
+  background-color: #333;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #ddd;
+  color: rgb(0, 0, 0);
+}
+
+.btn.active {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+

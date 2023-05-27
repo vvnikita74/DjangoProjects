@@ -1,0 +1,44 @@
+{% extends 'hospapp/base.html' %}
+{% load static %}
+{% block content %}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+
+<link type="text/css" rel="stylesheet" href="{% static 'hospapp/css/form.css' %}">
+<div class="mx-auto my-5 py-4 ps-3 w-25 rounded-3" style="background-color: rgb(183, 246, 253);">
+    <h5 align="center">Запись на прием</h5>
+
+    <form method="post" class="pt-4" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label class="px-3 pb-3"> Врач: </label> {{ doctor.user.name }}<br>
+        <label class="px-3">ФИО: </label> {{ request.user.name }}
+        {% for f in form %}
+                <div class="m-3">
+                    <label class="pe-3" for="{{ f.id_for_label }}">{{f.label}}: </label>
+                    {{ f }}
+                </div>
+                <div class="w-50 mx-auto">{{ f.errors }}</div>
+        {% endfor %}
+        <div class="text-danger w-50 mx-auto">{{ form.non_field_errors }}</div>
+        <p align="center"><button type="submit" id="submit" class="btn text-white rounded-3 mt-4" style="background-color: rgb(72, 177, 188)">Записаться на прием</button></p>
+    </form>
+</div>
+
+
+<script>
+    $(function () {
+      $("#id_date").datetimepicker({
+        format:'Y-m-d H:i',
+        allowTimes:[
+            '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'
+        ]
+      });
+    });
+
+    document.querySelector("#submit").onclick = function(){
+        alert("Заявка на прием оформлена, при успешном офорлении она появится в Вашем профиле");
+    }
+</script>
+{% endblock %}
+

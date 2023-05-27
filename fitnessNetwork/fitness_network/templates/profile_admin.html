@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link type="text/css" rel="stylesheet" href="{% static 'fitness_network/css/index_style.css' %}">
+<link type="text/css" rel="stylesheet" href="{% static 'fitness_network/css/center_style.css' %}">
+<link type="text/css" rel="stylesheet" href="{% static 'fitness_network/css/profile_style.css' %}">
+    <div class="filterDiv show">
+        <h3 align="center">Админ-панель</h3>
+        <h4>Список заказов</h4>
+        <table border="5" bordercolor="#636363">
+            <thead>
+                <tr>
+                    <th>Фитнес-центр</th>
+                    <th>Занятие</th>
+                    <th>Тренер</th>
+                    <th>ФИО заказчика</th>
+                    <th>Дата заказа</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.center_title }}</td>
+                        <td>{{ order.activity }}</td>
+                        <td>{{ order.worker }}</td>
+                        <td>{{ order.user.full_name }}</td>
+                        <td>{{ order.order_date }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h4>Количество заказов</h4>
+        <table border="5" bordercolor="#636363">
+            <thead>
+                <tr>
+                    <th>Фитнес-центр</th>
+                    <th>Количество заказов</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for center_order in centers_orders %}
+                    <tr>
+                        {% for title in center_order.keys %}
+                            <td>{{ title }}</td>
+                        {% endfor %}
+                        {% for center_order_count in center_order.values %}
+                            <td>{{ center_order_count }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

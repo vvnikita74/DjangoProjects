@@ -1,0 +1,22 @@
+.filterdiv {
+    display: none;
+}
+
+
+.show {
+    display: block;
+}
+
+
+.mybtn {
+    cursor: pointer;
+}
+
+.mybtn:hover {
+    background-color: #3f4243
+}
+
+.mybtn.now {
+    background-color: #292b2c;
+    color: rgb(0, 0, 0);
+}

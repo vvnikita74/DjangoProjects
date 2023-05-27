@@ -1,0 +1,21 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+<link type="text/css" rel="stylesheet" href="{% static 'shop/css/auth.css' %}">
+<div class="box">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="content">
+            <div class="errors">
+                {{ errors }}
+            </div>
+            <img src="{% static 'shop/images/mail_icon.png' %}" width="35px" height="35px">
+            <input type="text" name="username" placeholder="Электронная почта" autofocus="" autocapitalize="none" autocomplete="username" maxlength="254" required="" id="id_username"><br>
+            <img src="{% static 'shop/images/password_icon.png' %}" width="35px" height="35px">
+            <input type="password" name="password" placeholder="Пароль" autofocus="" autocapitalize="none" autocomplete="password" maxlength="254" required="" id="id_password"><br>
+            <p class="register">Отстутствует учетная запись ? - <a href="{% url 'register' %}">Зарегистрироваться</a></p>
+            <button type="submit">Войти</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

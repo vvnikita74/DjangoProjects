@@ -1,0 +1,20 @@
+.nav-link:hover {
+    color: rgb(1, 127, 141) !important;
+}
+
+.dropdown-menu:hover .dropdown-item:hover{
+    color: rgb(1, 127, 141) !important;
+}
+.round {
+    border-radius: 15px; 
+    width: 550px;
+    height: 300px;
+}
+
+.carousel-control-prev {
+    justify-content: left !important;
+}
+
+.carousel-control-next {
+    justify-content: right !important;
+}

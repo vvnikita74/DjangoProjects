@@ -1,0 +1,111 @@
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    font-size: 1.5em;
+}
+
+.content {
+    background-color: #dcdcdc;
+    padding: 20px;
+    text-align: center;
+}
+
+.content label, button {
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.content img {
+    vertical-align: middle;
+    margin-right: 10px; 
+}
+
+.content input,
+.content a,
+.content button {
+    margin-top: 0.5em;
+}
+
+.content a {
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.content a:hover {
+    color: rgba(0, 0, 0);
+}
+
+button[type="submit"] {
+    display: inline-block;
+    margin-top: 0.2em;
+}
+
+button[type="submit"]:hover {
+    color: rgba(0, 0, 0);
+}
+
+.content input:focus {
+    outline: 2px solid #000000;
+}
+
+.register {
+    margin-top: 1.25em;
+    font-size: 0.6em;
+}
+
+.errors {
+    color: rgba(201, 0, 0, 0.65);
+    font-size: 0.9em;
+}
+
+.form-field {
+    display: flex;
+    align-items: center;
+    width: 35em;
+}
+
+.form-field label {
+    flex: 0 0 50%;
+    padding-right: 0.5em;
+}
+
+.form-field input {
+    flex: 1;
+}
+
+@media (max-width: 400px) {
+
+    .form-field {
+        font-size: 0.75em;
+        width: 30em;
+    }
+
+    button[type="submit"] {
+        font-size: 0.75em;
+    }
+    
+    .content input {
+        font-size: 0.75em;
+    }
+}
+
+@media (max-width: 991px) and (min-width: 401px) {
+    
+    .form-field {
+        font-size: 0.8em;
+        width: 20em;
+    }
+
+    button[type="submit"] {
+        font-size: 0.8em;
+    }
+
+    .errors {
+        font-size: 0.8em;
+    }
+    .content input {
+        width: 10em;
+        font-size: 1em;
+    }
+}
+

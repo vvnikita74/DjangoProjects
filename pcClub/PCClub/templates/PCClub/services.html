@@ -1,0 +1,31 @@
+{% extends 'pcclub/base.html' %}
+{% load static %}
+{% block content %}
+    <link type="text/css" rel="stylesheet" href="{% static 'pcclub/css/services.css' %}">
+    <div id="BtnContainer" class="mx-auto mt-2">
+        <button class = "mybtn now btn text-white" onclick="filterSelection('P')">ПК</button>
+        <button class = "mybtn btn text-white" onclick="filterSelection('C')">Консоль</button>
+    </div>
+
+    {% for tariff in service %}
+        <div class = 'filterdiv {{ tariff.device }}'>
+            <div class = 'bg-dark rounded-3 w-50 text-white px-3 pt-3 mx-auto mt-2 pb-1'>
+                <img src = "{{ tariff.photo.url }}" class="rounded-2 float-end pb-3" width="330px", height="210px">
+                <h4 class="h4">{{ tariff.title }}</h4>
+                <p><small>{{ tariff.cost }} руб. в час</small></p>
+                <div class="w-50">
+                    {% if tariff.device == 'P' %}
+                    <h6 class="h6">Характеристики ПК</h6>
+                    <p><small>{{ tariff.characteristics }}</small></p>
+                    {% else %}
+                    <p>{{ tariff.characteristics }}</p><br>
+                    {% endif %}
+                    <h6 class="h6">Периферия</h6>
+                    <p><small>{{ tariff.periphery }}</small></p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="mb-3"></div>
+    <script src = "{% static 'PCClub/js/services.js'%}"></script>
+{% endblock %}

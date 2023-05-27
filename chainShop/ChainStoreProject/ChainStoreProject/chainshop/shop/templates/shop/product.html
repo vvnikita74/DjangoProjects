@@ -1,0 +1,71 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+<link type="text/css" rel="stylesheet" href="{% static 'shop/css/center_content.css' %}">
+<div class="box">
+    <div class="content">
+        <h4 align="center">{{product.name}}</h4>
+        <div class="description-box">
+            <div class="description">
+            <p>{{product.description|linebreaks}}</p>
+            <p>Стоимость: {{product.price}} руб.</p>
+            <p><a href="{% url 'cart_add' product.id %}">В корзину</a></p>
+            </div>
+            <div class="image">
+                <img src="{{ product.image.url }}" width="220px" height="325px">
+            </div>
+        </div>
+    </div>
+    
+</div>
+<style>
+    .description-box{
+        display: flex;
+        flex-direction: row;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    .description {
+        flex: 1;
+        white-space: normal;
+    }
+    img {
+        margin-top: 0.5em;
+        width: 20vw;
+        height: 20vw;
+        flex: 0 0 auto;
+    }
+    @media (max-width:500px){   
+
+        .description {
+            width: 9em;
+        }
+
+        .description p {
+            width: auto !important;
+        }
+        h4 {
+            font-size: 0.75em;
+        } 
+        img {
+            width: 40vw;
+            height: 40vw;
+        }
+    }
+
+    @media (max-width: 991px) and (min-width: 500px) {
+        img {
+            width: 25vw;
+            height: 20vw;
+        }
+    }
+
+
+    @media (max-width: 1367px) and (min-width: 991px){
+        .img {
+            width: 30vw;
+            height: 30vw;
+        }
+    }
+</style>
+{% endblock %}

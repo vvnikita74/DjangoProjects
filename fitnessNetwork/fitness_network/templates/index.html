@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link type="text/css" rel="stylesheet" href="{% static 'fitness_network/css/index_style.css' %}">
+    <div id="myBtnContainer" class="btnBlock">
+        <button class="btn active" onclick="filterSelection('all')">Показать все</button>
+        <button class="btn" onclick="filterSelection('moscow')">Москва</button>
+        <button class="btn" onclick="filterSelection('spb')">Санкт-Петербург</button>
+        <button class="btn" onclick="filterSelection('ekaterinburg')">Екатеринбург</button>
+        <button class="btn" onclick="filterSelection('sochi')">Сочи</button>
+    </div>
+    <div class="container">
+        {% for center in centers %}
+            <div class="filterDiv {{center.city}}">
+                {% if center.photo %}
+                    <a href="{{center.get_absolute_url}}">
+                        <img class='imgBlock' src="{{center.photo.url}}", alt="center_picture", height="175", width="300">
+                    </a>
+                {% else %}
+                    <a href="{{center.get_absolute_url}}">
+                        <img class='imgBlock' src="http://dummyimage.com/300x175/c0c0c0&text=FitnessCenterPhoto">
+                    </a>
+                {% endif %}
+                <a href="{{center.get_absolute_url}}"><h4>{{center.title}}</h4></a>
+                <br><br>
+                <p>
+                    Адрес: {{center.location}}<br>
+                    Занятий:
+                    {% for key, value in centers_act_count.items %}
+                        {% if key == center.title %}
+                        {{ value }}
+                        {% endif %}
+                    {% endfor %}<br>
+                    Контактные данные:
+                    <ul>
+                        <li>+{{center.manager_phone}}</li>
+                        <li>{{center.email}}</li>
+                    </ul>
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+    <script src="{% static 'fitness_network/js/index.js'%}"></script>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+    <link type="text/css" rel="stylesheet" href="{% static 'shop/css/style.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'shop/css/profile.css' %}">
+    <div class="container">
+        <div class="content" style="min-width: 400px;">
+
+            <h3 align="center">Здравствуйте!</h3>
+            <div class="user-info">
+                <h5>Email: {{request.user.email}}</h5>
+                <h5>Номер телефона: {{request.user.phone_number}}</h5>
+            </div>
+            <ul>Файлы ваших заказов: 
+            {% for date, file in files.items %}
+            <li class="mt-2"><a href="{% url 'download_file' file %}">Заказ от {{date}}</a></li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div id="footer">
+        <a href="{% url 'home' %}">Главная</a>
+    </div>
+
+    <script>
+        window.onload = function () {
+            document.querySelector('.content').classList.add('show');
+            document.querySelector('#footer').classList.add('show')
+        }
+    </script>
+{% endblock %}

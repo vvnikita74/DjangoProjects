@@ -1,0 +1,16 @@
+.product-description {
+    display: flex;
+    flex-direction: row;
+    max-width: 800px;
+    margin: 0 auto;
+}
+  
+.description {
+    flex: 1;
+    padding-right: 20px;
+}
+  
+.image {
+    flex: 0 0 auto;
+}
+  

@@ -1,0 +1,31 @@
+{% extends 'pcclub/base.html' %}
+{% load static %}
+{% block content %}
+    <link type="text/css" rel="stylesheet" href="{% static 'pcclub/css/profile.css' %}">
+    <div class="mx-auto mt-4 bg-dark rounded-3 text-white p-3 w-50">
+        <img src = "{{ user.profile_image.url }}" class="rounded-2 float-end" width="200px" height="220px">
+        <h4 class="h4">{{ user.username }}</h4>
+        <p><br>Электронная почта: {{ user.email }}<br>Номер телефона: {{ user.phone_number }}</p>
+    </div>
+
+    <div class="mx-auto mt-2 mb-4 bg-dark rounded-3 text-white p-3 w-50">
+        <h4 class="h4">История заказов</h4>
+        <table class="w-100">
+            <tr>
+                <th>Дата</th>
+                <th>Клуб</th>
+                <th>Тариф</th>
+                <th>Стоимость</th>
+            </tr>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.date }}</td>
+                    <td>{{ order.club }}</td>
+                    <td>{{ order.tariff }}</td>
+                    <td>{{ order.cost }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}

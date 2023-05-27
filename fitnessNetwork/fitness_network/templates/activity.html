@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link type="text/css" rel="stylesheet" href="{% static 'fitness_network/css/index_style.css' %}">
+<link type="text/css" rel="stylesheet" href="{% static 'fitness_network/css/act_style.css' %}">
+    <div class="filterDiv show">
+        <h2>Занятия {{ center.title }}</h2>
+        {% for act in acts_info %}
+            <div class = "act_block">
+                {% if act.photo %}
+                    <p><img class='imgBlock' src="{{act.photo.url}}", alt="activity_picture", height="253", width="450"></p>
+                {% endif %}
+                <h4>{{act.title}}</h4>
+                <p>{{act.description}}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

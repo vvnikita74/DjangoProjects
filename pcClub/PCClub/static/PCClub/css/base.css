@@ -1,0 +1,21 @@
+.nav li.active, .nav li.active:hover, li:hover, a:hover {
+    background-color: rgb(59, 60, 62) !important;
+}
+
+:active, :hover, :focus {
+    outline: 0;
+    outline-offset: 0;
+}
+
+.my-x {
+    margin-right: 17rem !important;
+    margin-left: 17rem !important;
+}
+
+.carousel-control-prev {
+    justify-content: left !important;
+}
+
+.carousel-control-next {
+    justify-content: right !important;
+}

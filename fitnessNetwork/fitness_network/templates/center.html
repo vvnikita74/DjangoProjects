@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<script>document.getElementById('davaToday').valueAsDate = new Date();</script>
+<link type="text/css" rel="stylesheet" href="{% static 'fitness_network/css/index_style.css' %}">
+<link type="text/css" rel="stylesheet" href="{% static 'fitness_network/css/center_style.css' %}">
+
+<!-- XDSoft DateTimePicker -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+
+    <div class="filterDiv show {{center.city}}">
+        {% if center.photo %}
+            <p><img class='imgBlock' src="{{center.photo.url}}", alt="center_picture", height="253", width="450"></p>
+        {% else %}
+                <img class='imgBlock' src="http://dummyimage.com/450x253/c0c0c0&text=FitnessCenterPhoto">
+        {% endif %}
+        <h2>{{center.title}}</h2>
+        <br><br>
+        <p>
+            Адрес: {{center.location}}<br>
+            Контактные данные:
+            <ul>
+                <li>+{{center.manager_phone}}</li>
+                <li>{{center.email}}</li>
+            </ul>
+        </p>
+        <br><br><br>
+        <h4>Тренеры, Цены за занятия</h4>
+        <p><a href="{%url 'activity_page' center.id%}">Список и описание предоставляемых занятий</a></p>
+        <p>Специализация тренеров указана в карточках ниже, но любой Наш Тренер может провести любое занятие, доступное в форме заявки</p>
+        <div class="worker_container">
+            {% for worker in employers %}
+            <div class="worker_card">
+                {% if worker.photo %}
+                    <img src="{{worker.photo.url}}" alt="{{worker.name}}" height="200", width="200">
+                {% else %}
+                    <img src="http://dummyimage.com/200x200/c0c0c0&text=EmployerPhoto">
+                {% endif %}
+                <p>{{worker.name}}</p>
+                {% for act in activities %}
+                    {% if act.id == worker.activity_id %}
+                    <p>{{act.title}}</p>
+                    <p>{{act.cost}}</p>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+        <br><h4>Фитнес-центр на карте</h4>
+        <p align='center'>
+            <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aaa7c1bd046c64febc4c076d414ff3e33dc92feacc13af1c982df615afd907ff9&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+        </p>
+        <br><br>
+        {% if request.user.is_authenticated %}
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-error">{{ form.non_field_errors }}</div>
+                {% for f in form %}
+                    <h3><label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</h3>
+                    <div class="form-error">{{ f.errors }}</div>
+                {% endfor %}
+                <h3><button type="submit" id="submit">Добавить</button></h3>
+            </form>
+        {% else %}
+            <h4 align="center">Для заполнения заявки необходима авторизация</h4>
+        {% endif %}
+    </div>
+    
+    <script>
+        $(function () {
+          $("#id_date").datetimepicker({
+            format:'Y-m-d H:i',
+            allowTimes:[
+                '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'
+            ]
+          });
+        });
+
+        document.querySelector("#submit").onclick = function(){
+            alert("Заявка оформлена");
+        }
+      </script>
+
+{% endblock %}

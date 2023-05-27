@@ -1,0 +1,23 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+<link type="text/css" rel="stylesheet" href="{% static 'shop/css/index.css' %}">
+<div class="container mb-5">
+    <div class="row">
+      {% for product in products %}
+        <div class="col-sm-6 col-md-4 col-lg-3 mt-5 product">
+          <div class="card">
+            <div class="image-containter">
+              <a href="{% url 'product' product.slug %}" class="overlay-link">Подробнее</a>
+              <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img-top">
+            </div>
+            <div class="card-body">
+              <p class="card-title"><b>{{ product.name }}</b></p>
+              <p class="card-text">Стоимость: {{ product.price }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

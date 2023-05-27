@@ -1,0 +1,20 @@
+{% extends 'pcclub/base.html' %}
+{% load static %}
+{% block content %}
+    <link type="text/css" rel="stylesheet" href="{% static 'pcclub/css/form.css' %}">
+    <div class="mx-auto my-4 bg-dark p-2 px-0 rounded-3 w-auto">
+        <form method="post" class="pt-1">
+            {% csrf_token %}
+            {% for f in form %}
+                    <p align="center">
+                        <label class="text-white w-50" for="{{ f.id_for_label }}">{{f.label}} </label>
+                        {{ f }}
+                    </p>
+                    <div class="text-white w-50 mx-auto">{{ f.errors }}</div>
+            {% endfor %}
+            <div class="text-danger w-75 mx-auto">{{ form.non_field_errors }}</div>
+            <p align="center"><small><a href="{% url 'password_reset' %}" class="text-white">Восстановить пароль</a></small></p>
+            <p align="center"><button type="submit" class="btn btn-secondary">Войти</button></p>
+        </form>
+    </div>
+{% endblock %}

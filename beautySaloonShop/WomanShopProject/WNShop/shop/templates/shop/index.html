@@ -1,0 +1,29 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+
+    <link type="text/css" rel="stylesheet" href="{% static 'shop/css/index.css' %}">
+
+    <div class="button-container">
+		<div class="button" onclick="location.href='products';">Магазин</div>
+        {% if request.user.is_admin %}
+        <div class="button" onclick="location.href='admin';">Админ</div>
+        {% else %}
+        <div class="button" onclick="location.href='profile';">Профиль</div>
+        {% endif %}
+		<div class="button" onclick="location.href='about';">О нас</div>
+	</div>
+
+    <div id="footer">Салон-магазин красоты</div>
+
+    <script>
+            window.onload = function() {
+                document.querySelector('.button-container').classList.add('show');
+                document.querySelectorAll('.button').forEach(button => {
+                    button.classList.add('show');
+                });
+                document.querySelector('#footer').classList.add('show');
+            }
+    </script>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'hospapp/base.html' %}
+{% load static %}
+{% block content %}
+<style>
+.round-ind {
+    border-radius: 15px; 
+    width: 400px;
+    height: 250px;
+}
+</style>
+<div class="my-4 mx-auto text-dark px-2 pt-2 rounded-3" style="background-color: rgb(183, 246, 253); height: 370px;">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'hospapp/image/hosp.png' %}" class="float-end rounded-3" width="600px" height="355px">
+                <h3 align="center" style="padding-top:152px;">Больница Марк-Н-5000</h3>
+            </div>
+            <div class="carousel-item">
+                <h3 class="p-2" align="center">Наши преимущества</h3>
+                <p class="pe-3"><img src="{% static 'hospapp/image/home.png' %}" class="round float-end"></p>
+                <ul style="padding-top:70px;">
+                    <h5><li class="pb-4">Широкий спектр услуг</li>
+                    <li class="pb-4">Квалифицированные специалисты</li>
+                    <li>Высококачественное импортное оборудование</li></h5>
+                </ul>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        </button>
+    </div>
+</div>
+<div class="text-white mx-auto rounded-3" style="background-color: rgb(72, 177, 188); width: 85%;">
+    <h5 align='center' class="p-2">Мы предоставляем</h5>
+</div>
+<div class="mx-auto d-flex flex-column w-75">
+    {% for service in services %}
+    <div class="my-2 rounded-3 p-2" style="background-color: rgb(183, 246, 253);">
+        <h5 align="center">{{ service.title }}</h5>
+        <p><img src='{{ service.photo.url }}' class="float-end round-ind pe-2 pt-1"></p>
+        <p class="w-auto px-2" align="justify" style="padding-top:10px; max-width: 62%;">{{ service.description  }}</p>
+        <h6 class="px-2">Стоимость: {{ service.cost }}</h6>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

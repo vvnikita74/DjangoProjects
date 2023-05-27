@@ -1,0 +1,50 @@
+{% extends 'hospapp/base.html' %}
+{% load static %}
+{% block content %}
+    <style>
+        .table-link:link{
+            color: #ff0000;
+        }
+        .table-link:visited{
+            color: #ff0000;
+        }
+        .table-link:hover{
+            color: #000000;
+        }
+        .status {
+            text-align: center;
+        }
+    </style>
+    <link type="text/css" rel="stylesheet" href="{% static 'hospapp/css/profile.css' %}">
+    <div class="my-4 p-4 rounded-3 w-75 mx-auto" style="background-color: rgb(183, 246, 253);">
+        <h4 align="center" class="pb-2">{{ request.user.name }}</h4>
+        <h5 align="center" class="pb-4">Приемы</h5>
+        <table class="text-white mx-auto w-100">
+            <thead style="text-align: center;">
+                <tr>
+                    <th>Дата</th>
+                    <th>Клиент (номер телефона)</th>
+                    <th>Услуга</th>
+                    <th>Статус</th>
+                    <th>Опции</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for recept in receptions %}
+                    <tr>
+                        <td>{{ recept.date }}</td>
+                        <td>{{ recept.client }} ({{ recept.client.phone_number }})</td>
+                        <td>{{ recept.service }}</td>
+                        {% if recept.is_close %}
+                            <td class="status" style="color: #5c636a"><b>Закрыт</b></td>
+                        {% else %}
+                            <td class="status"><b>Открыт</b></td>
+                            <td style="text-align: center;"><a class="table-link" href="{% url 'close_reception' recept.id %}">Закрыть прием</a></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,41 @@
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    font-size: 1.25em;
+}
+
+.content {
+    background-color: #dcdcdc;
+    padding: 15px;
+}
+
+.content p {
+    font-size: 0.75em;
+    width: 45em;
+}
+
+.content li {
+    font-size: 0.75em;
+}
+
+@media (max-width: 400px) {
+    .content {
+        margin-top: 1em;
+    }
+    .content p {
+        font-size: 0.5em;
+        width: 25em;
+    }
+    .content li {
+        font-size: 0.5em;
+    }
+}
+
+@media (max-width: 991px) and (min-width: 401px) {
+    .content p {
+        font-size: 0.75em;
+        width: 35em;
+    }
+}

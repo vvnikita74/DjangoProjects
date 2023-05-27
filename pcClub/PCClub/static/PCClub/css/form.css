@@ -1,0 +1,11 @@
+input {
+    font-size: 16px;
+    line-height: 14px;
+    padding: 8px 16px;
+    width: 70%;
+    min-height: 33px;
+    border: unset;
+    border-radius: 4px;
+    outline-color: rgb(84 105 212 / 0.5);
+    background-color: rgb(255, 255, 255);
+}

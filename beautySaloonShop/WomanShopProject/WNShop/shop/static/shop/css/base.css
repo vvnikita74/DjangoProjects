@@ -1,0 +1,41 @@
+body {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.user-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    color: rgb(225, 254, 251);
+    font-size: 1.25em;
+}
+
+.user-container a {
+    color: rgb(225, 254, 251) !important;
+    text-decoration: underline !important;
+}
+
+.user-container a:hover {
+    color: #00BFFF !important;
+}
+
+.dropdown-menu{
+    background-color: rgba(0, 206, 209, 0.9) !important;
+}
+
+.dropdown-menu a{
+    text-decoration: none !important;
+}
+
+.dropdown-menu a:hover{
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+.dropdown-item:hover{
+    background-color: #00BFFF !important;
+}

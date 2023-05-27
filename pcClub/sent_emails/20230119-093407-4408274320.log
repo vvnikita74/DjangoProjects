@@ -1,0 +1,25 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: 
+ =?utf-8?b?0KHQsdGA0L7RgSDQv9Cw0YDQvtC70Y8g0L3QsCAxMjcuMC4wLjE6ODAwMA==?=
+From: webmaster@localhost
+To: yungnik@mail.ru
+Date: Thu, 19 Jan 2023 09:34:07 -0000
+Message-ID: 
+ <167412084767.56484.2458124067411126506@1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.ip6.arpa>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    Здравствуйте, yungnik!
+    Запрос восстановления пароля на yungnik@mail.ru. Перейдите по ссылке для изменения пароля:
+    http://127.0.0.1:8000/password_reset_confirm/Mg/bi9p8v-357d1d3aa4bc98add46abcaad1b4fd84/
+</body>
+</html>
+-------------------------------------------------------------------------------

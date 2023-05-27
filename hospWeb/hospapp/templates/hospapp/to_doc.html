@@ -1,0 +1,22 @@
+{% extends 'hospapp/base.html' %}
+{% load static %}
+{% block content %}
+<link type="text/css" rel="stylesheet" href="{% static 'hospapp/css/to_doc.css'%}">
+
+    <div class="doclist">
+        {% for doc in doctors %}
+            <div class="mt-5 rounded-3 p-3 doc mx-5" style="background-color: rgb(183, 246, 253);">
+                <img src="{{ doc.image.url }}" class="float-end round-ind" alt="Фото доктора">
+                <h4>{{ doc.user.name }}</h4>
+                <h6 class="mt-5">Услуги врача: </h6>
+                <ul>
+                    {% for service in doc.services.all %}
+                        <li>{{ service.title }}</li>
+                    {% endfor %}
+                </ul>
+                <a class="nav-link text-white w-25 rounded-3 float-start" href="{% url 'recept' doc.id %}" style="background-color: rgb(72, 177, 188); text-align: center">Записаться</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+

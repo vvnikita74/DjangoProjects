@@ -1,0 +1,45 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+
+    <link type="text/css" rel="stylesheet" href="{% static 'shop/css/style.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'shop/css/product.css' %}">
+
+    <div class="container">
+        <div class="content">
+
+            <h3 align="center">{{product.name}}</h3>
+
+            <div class="product-description mt-4">
+                <div class="description">
+                    <h5>Описание</h5>
+                    <p>{{product.description|linebreaks}}</p>
+                    <p>Стоимость: {{product.price}} руб.</p>
+                </div>
+                <div class="image">
+                    <img src="{{ product.image.url }}" width="220px" height="325px">
+                </div>
+            </div>
+
+            {% if request.user.is_authenticated %}
+            <h3 align="center"><a href="{% url 'cart_add' product.id %}">В корзину</a></h3>
+            {% endif %}
+
+        </div>
+    </div>
+
+    <div id="footer">
+        <a href="{% url 'products' %}">Магазин</a>
+        {% if request.session.cart|length %}
+        <a href="{% url 'cart_detail' %}" class="ms-3">Корзина</a>
+        {% endif %}
+    </div>
+
+    <script>
+        window.onload = function () {
+            document.querySelector('.content').classList.add('show');
+            document.querySelector('#footer').classList.add('show')
+        }
+    </script>
+
+{% endblock %}

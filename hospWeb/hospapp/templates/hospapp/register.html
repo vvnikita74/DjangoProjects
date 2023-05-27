@@ -1,0 +1,19 @@
+{% extends 'hospapp/base.html' %}
+{% load static %}
+{% block content %}
+<link type="text/css" rel="stylesheet" href="{% static 'hospapp/css/form.css' %}">
+<div class="mx-auto my-5 py-4 px-0 w-25 rounded-3" style="background-color: rgb(183, 246, 253);">
+    <form method="post" class="pt-2" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for f in form %}
+                <p align="center" class="pt-3">
+                    <label class="w-50" for="{{ f.id_for_label }}">{{f.label}} </label>
+                    {{ f }}
+                </p>
+                <div class="w-75 mx-auto text-danger">{{ f.errors }}</div>
+        {% endfor %}
+        <div class="text-danger w-75 mx-auto">{{ form.non_field_errors }}</div>
+        <p align="center"><button type="submit" class="btn text-white rounded-3 mt-4" style="background-color: rgb(72, 177, 188)">Зарегистрироваться</button></p>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'pcclub/base.html' %}
+{% load static %}
+{% block content %}
+    <link type="text/css" rel="stylesheet" href="{% static 'pcclub/css/form.css' %}">
+    <style>
+    input{
+        width: 139px;
+    }
+    </style>
+    <div class="bg-dark my-3 my-x p-3 text-white rounded-3">
+        <h3 align="center">{{ club.title }}</h3><br>
+        <img src="{{ club.photo.url }}" class="rounded-2 float-end" width="400px", height="200px">
+        <br><br>
+        <ul>
+            <li><p>Адрес: {{ club.location }}</p></li>
+            <li><p>Телефон администратора: {{ club.manager_phone }}</p></li>
+            <li><p>Почта для связи: {{ club.email }}</p></li>
+        </ul>
+        <br><br>
+        <a href="{% url 'services' %}" class="text-white"><h5 class="px-3 pb-2"><b>Услуги:</b></h5></a>
+        <ol>
+            {% for tariff in club.tariffs.all %}
+                <li><p>{{ tariff.title }}: {{ tariff.cost }} руб/ч</p></li>
+            {% endfor %}
+        </ol>
+        {% if request.user.is_authenticated %}
+
+        {% else %}
+            <div class="px-3 pt-2">
+                <p>Чтобы оформить заявку, <a class="text-white" href="{% url 'login' %}">авторизируйтесь</a>
+                    или <a class="text-white" href="{% url 'register' %}">зарегистрируйтесь</a></p>
+            </div>
+        {% endif %}
+        <form method="post" class="pt-2 px-3 w-auto">
+            {% csrf_token %}
+            {% for f in form %}
+                    <p align="center">
+                        <label class="text-white pe-2" for="{{ f.id_for_label }}">{{f.label}}:</label>
+                        {{ f }}
+                    </p>
+                    <div class="text-danger" align="center">{{ f.errors }}</div>
+            {% endfor %}
+            <p align="center"><button type="submit" class="btn btn-secondary">Арендовать</button></p>
+        </form>
+
+
+    </div>
+{% endblock %}

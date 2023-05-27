@@ -1,0 +1,33 @@
+{% extends 'hospapp/base.html' %}
+{% load static %}
+{% block content %}
+<link type="text/css" rel="stylesheet" href="{% static 'hospapp/css/profile.css' %}">
+    <div class="my-4 p-4 rounded-3 w-50 mx-auto" style="background-color: rgb(183, 246, 253);">
+        <h4 align="center" class="pb-4">{{ request.user.name }}</h4>
+        <h6>Ваши персональные данные</h6>
+        <ul class="pb-2">
+            <li>Электронная почта: {{ request.user.email }}</li>
+            <li>Номер телефона: {{ request.user.phone_number }}</li>
+        </ul>
+        <h6>Ваши приемы <small>(отображаются только незакрытые приемы !)</small></h6>
+        <table class="text-white mx-auto w-100">
+            <thead>
+                <tr>
+                    <th>Дата</th>
+                    <th>Врач</th>
+                    <th>Услуга</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for recept in recepts %}
+                    <tr>
+                        <td>{{ recept.date }}</td>
+                        <td>{{ recept.doctor }}</td>
+                        <td>{{ recept.service }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+

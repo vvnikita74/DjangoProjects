@@ -1,0 +1,61 @@
+{% extends 'pcclub/base.html' %}
+{% load static %}
+{% block content %}
+    <link type="text/css" rel="stylesheet" href="{% static 'pcclub/css/profile.css' %}">
+    <style>#hid{display: none;}</style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <div class="mx-auto mt-4 bg-dark rounded-3 text-white p-3 w-75">
+        <h4 align="center">Админ</h4><br>
+        <table class="w-100">
+            <thead>
+                <tr>
+                    <th>Клуб</th>
+                    <th>Количество заказов</th>
+                    <th>Прибыль</th>
+                </tr>
+            </thead>
+            {% for club_order in clubs_orders %}
+                <tr>
+                    {% for dict in club_order %}
+                        {% for v in dict.values %}
+                            <td>{{ v }}</td>
+                        {% endfor %}
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <div align="center"><button class="btn btn-secondary">Все заказы</button></div>
+        <div id="hid" class="pt-2">
+            <table class="w-100">
+                <thead>
+                    <tr>
+                        <th>Дата</th>
+                        <th>Пользователь</th>
+                        <th>Клуб</th>
+                        <th>Тариф</th>
+                        <th>Время</th>
+                        <th>Стоимость</th>
+                    </tr>
+                </thead>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.date }}</td>
+                        <td>{{ order.user }}</td>
+                        <td>{{ order.club }}</td>
+                        <td>{{ order.tariff }}</td>
+                        <td>{{ order.hours }}</td>
+                        <td>{{ order.cost }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <script>
+        $(function() {
+            $('button').on('click', function() {
+                $('#hid').slideToggle(300);
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link type="text/css" rel="stylesheet" href="{% static 'fitness_network/css/index_style.css' %}">
+<link type="text/css" rel="stylesheet" href="{% static 'fitness_network/css/center_style.css' %}">
+<div class="filterDiv show">
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-error">{{ form.non_field_errors }}</div>
+            {% for f in form %}
+                <h4 align="center"><label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</h4>
+                <div class="form-error">{{ f.errors }}</div>
+            {% endfor %}
+        <h2 align="center"> <button type="submit">Войти</button></h2>
+    </form>
+{% endblock %}

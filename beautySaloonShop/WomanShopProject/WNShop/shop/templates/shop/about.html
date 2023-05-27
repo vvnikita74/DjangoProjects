@@ -1,0 +1,36 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+
+    <link type="text/css" rel="stylesheet" href="{% static 'shop/css/style.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <div class="container">
+        <div class="content">
+            <h1 align="center">О нас</h1><br>
+            <h4>Мы предлагаем:</h4>
+            <ul>
+                <li>Магазин товаров для красоты с возможностью оформления заказа</li>
+                <li>Возможность применения купленных товаров сразу в нашем салоне</li>
+                <li>Косметические услуги по вашим пожеланиям у профессионалов</li>
+            </ul>
+
+            <h4>Контактные данные</h4>
+            <p>Адрес - Москва, ...<br>
+               Телефон - 85382483592<br>
+               Электронная почта - pochtakrasoti@mail.ru</p>
+        </div>
+    </div>
+
+    <div id="footer">
+        <a href="{% url 'home' %}">Домой</a>
+    </div>
+
+    <script>
+        window.onload = function () {
+            document.querySelector('.content').classList.add('show');
+            document.querySelector('#footer').classList.add('show')
+        }
+    </script>
+
+{% endblock %}
